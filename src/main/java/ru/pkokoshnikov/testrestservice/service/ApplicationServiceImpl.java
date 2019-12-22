@@ -29,14 +29,14 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     @Transactional
-    public LastApplicationDTO getLastApplicationForContact(long id) {
-        if (!contactRepo.existsById(id)) {
-            throw new ApplicationServiceException(CONTACT_NOT_FOUND_FOR_ID + id);
+    public LastApplicationDTO getLastApplicationForContact(long contactId) {
+        if (!contactRepo.existsById(contactId)) {
+            throw new ApplicationServiceException(CONTACT_NOT_FOUND_FOR_ID + contactId);
         }
 
-        Application foundApplication = applicationRepo.findLastApplicationByContactId(id);
+        Application foundApplication = applicationRepo.findLastApplicationByContactId(contactId);
         if (foundApplication == null) {
-            throw new ApplicationServiceException(APPLICATION_IS_NOT_FOUND_FOR_CONTACT_ID + id);
+            throw new ApplicationServiceException(APPLICATION_IS_NOT_FOUND_FOR_CONTACT_ID + contactId);
         }
         return new LastApplicationDTO(foundApplication.getId(),
                 foundApplication.getContactId(), foundApplication.getProductName(),
