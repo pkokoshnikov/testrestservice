@@ -11,3 +11,7 @@ mvn clean package
 ## Run
 
 java -jar target/testrestservice-1.0-SNAPSHOT.jar
+
+## Swagger
+
+Please see generated/swagger-ui/swagger.yaml
