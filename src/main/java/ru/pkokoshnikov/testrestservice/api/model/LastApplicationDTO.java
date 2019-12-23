@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -16,6 +17,7 @@ import java.time.ZonedDateTime;
 
 @NoArgsConstructor
 @Getter
+@Setter
 @AllArgsConstructor
 @ApiModel(description = "Describes a last application DTO")
 @XmlRootElement(name = "application")
@@ -23,12 +25,12 @@ public class LastApplicationDTO {
 
     @JsonProperty(value = "application_id")
     @XmlElement(name = "application_id")
-    @ApiModelProperty(value = "id of the application", allowableValues = "range[1,infinity)")
+    @ApiModelProperty(value = "id of the application")
     private long id;
 
     @JsonProperty(value = "contact_id")
     @XmlElement(name = "contact_id")
-    @ApiModelProperty(value = "id of the contact", allowableValues = "range[1,infinity)")
+    @ApiModelProperty(value = "id of the contact")
     private long contactId;
 
     @JsonProperty(value = "product_name")
@@ -42,6 +44,6 @@ public class LastApplicationDTO {
     @JsonDeserialize(converter = StringToZoneDateTimeConverter.class)
     @XmlElement(name = "dt_created")
     @XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
-    @ApiModelProperty(value = "creation date time")
+    @ApiModelProperty(value = "creation date time in ISO-8601 with timezone")
     private ZonedDateTime zonedDateTime;
 }

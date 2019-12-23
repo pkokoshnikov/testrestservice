@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import ru.pkokoshnikov.testrestservice.IntegrationTestConfiguration;
+import ru.pkokoshnikov.testrestservice.utils.IntegrationTestConfiguration;
 import ru.pkokoshnikov.testrestservice.TestRestServiceJdbConfiguration;
 import ru.pkokoshnikov.testrestservice.api.model.LastApplicationDTO;
 import ru.pkokoshnikov.testrestservice.db.ApplicationRepo;

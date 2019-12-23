@@ -28,7 +28,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public LastApplicationDTO getLastApplicationForContact(long contactId) {
         if (!contactRepo.existsById(contactId)) {
             throw new ApplicationServiceException(CONTACT_NOT_FOUND_FOR_ID + contactId);
@@ -38,6 +38,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         if (foundApplication == null) {
             throw new ApplicationServiceException(APPLICATION_IS_NOT_FOUND_FOR_CONTACT_ID + contactId);
         }
+
         return new LastApplicationDTO(foundApplication.getId(),
                 foundApplication.getContactId(), foundApplication.getProductName(),
                 Instant.ofEpochMilli(foundApplication.getCreatedDateTime()).atZone(ZoneId.systemDefault()));

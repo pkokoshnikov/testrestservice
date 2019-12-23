@@ -7,7 +7,6 @@ import org.springframework.data.annotation.Id;
 
 
 @NoArgsConstructor
-@EqualsAndHashCode
 @Getter
 public class Application {
     @Id
@@ -25,3 +24,4 @@ public class Application {
         this.createdDateTime = createdDateTime;
     }
 }
+

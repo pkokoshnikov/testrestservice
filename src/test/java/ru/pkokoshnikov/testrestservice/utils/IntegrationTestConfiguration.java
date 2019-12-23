@@ -1,4 +1,4 @@
-package ru.pkokoshnikov.testrestservice;
+package ru.pkokoshnikov.testrestservice.utils;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;

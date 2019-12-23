@@ -19,7 +19,7 @@ public class ApplicationController {
     @Autowired
     private ApplicationService applicationService;
 
-    @ApiOperation(value = "Get last application for the contactId", response = LastApplicationDTO.class)
+    @ApiOperation(value = "Returns last application for the contactId", response = LastApplicationDTO.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Application is found", response = LastApplicationDTO.class),
             @ApiResponse(code = 500, message = "Internal Server Error"),
@@ -28,7 +28,7 @@ public class ApplicationController {
     @GetMapping(value = "/lastApplication/{contactId}", headers = {"Accept=application/json,application/xml"},
             produces = {"application/json", "application/xml"})
     public LastApplicationDTO getLastApplication(@ApiParam(name = "contactId")
-                                             @PathVariable(value = "contactId") Long contactId) {
+                                                 @PathVariable(value = "contactId") Long contactId) {
         return applicationService.getLastApplicationForContact(contactId);
     }
 

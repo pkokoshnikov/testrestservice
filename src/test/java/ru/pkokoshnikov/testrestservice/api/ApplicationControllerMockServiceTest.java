@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import ru.pkokoshnikov.testrestservice.IntegrationTestConfiguration;
+import ru.pkokoshnikov.testrestservice.utils.IntegrationTestConfiguration;
 import ru.pkokoshnikov.testrestservice.service.ApplicationService;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,9 +36,9 @@ public class ApplicationControllerMockServiceTest {
     public void testInternalServerError() {
         doThrow(new RuntimeException()).when(applicationService).getLastApplicationForContact(anyLong());
 
-        ResponseEntity<String> errorMessage = restTemplate.getForEntity("http://localhost:" + port + "/rest/lastApplication/"
-                + 1, String.class);
-        assertThat(errorMessage.getBody()).isEqualTo("Internal server error");
-        assertThat(errorMessage.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://localhost:" + port +
+                "/rest/lastApplication/" + 1, String.class);
+        assertThat(responseEntity.getBody()).isEqualTo("Internal server error");
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
